@@ -12,6 +12,7 @@ Google Analytics for Kirby. Set it and forget it. Only Google Analytics ID requi
 
 - Load script only for not logged in users.
 - Load script only if not on a localhost enviroment.
+- Possible to disable the script completely.
 - Possible to debug and always load the script.
 - Possible to change the script template/snippet path.
 - Possible to change the IP blacklist.
