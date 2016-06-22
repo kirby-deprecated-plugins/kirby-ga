@@ -21,6 +21,7 @@ Google Analytics for Kirby. Set it and forget it. Only Google Analytics ID requi
 
 1. Add `ga` folder in `site/plugins/`.
 1. Set Google Analytics id to your `config.php`. See options.
+1. Add `<?php echo ga(); ?>` in your footer snippet. 
 
 ## Options
 
