@@ -64,7 +64,7 @@ c::set('plugin.ga.template', __DIR__ . DS . 'template.php');
 As default the localhost IP addresses are in the blacklist. That mean that the script will not run on these IP:s except if debug is turned on.
 
 ```php
-c::get('plugin.ga.blacklist', [ '127.0.0.1', '::1' ] );
+c::set('plugin.ga.blacklist', [ '127.0.0.1', '::1' ] );
 ```
 
 ## Requirements
