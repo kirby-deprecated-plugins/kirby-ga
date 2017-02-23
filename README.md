@@ -1,39 +1,47 @@
 # Kirby GA
 
-*Verion 0.1*
+*Verion 0.2*
 
-Google Analytics for Kirby. Set it and forget it. Only Google Analytics ID required as a setting.
+Google Analytics for Kirby CMS.
+
+- Doesn't run the GA script on localhost.
+- Doesn't run the GA script if you are logged in.
+
+**Table of contents**
+
+- [Installation instructions](docs/install.md)
+- [Changelog](docs/changelog.md)
+
+## Usage
+
+1. Add the config `plugin.ga.id` to `config.php`.
+1. Add the code below to your footer snippet.
 
 ```php
-<?php echo ga(); ?>
+<?php echo snippet('ga'); ?>
 ```
-
-**Features**
-
-- Load script only for not logged in users.
-- Load script only if not on a localhost enviroment.
-- Possible to disable the script completely.
-- Possible to debug and always load the script.
-- Possible to change the script template/snippet path.
-- Possible to change the IP blacklist.
-
-## Install
-
-1. Add `ga` folder in `site/plugins/`.
-1. Set Google Analytics id to your `config.php`. See options.
-1. Add `<?php echo ga(); ?>` in your footer snippet. 
 
 ## Options
 
-### ID (required)
-
-The Google Analytics ID is required for the script to work.
+Only the `plugin.ga.id` is required.
 
 ```php
-c::set('plugin.ga.id', 'UA-12345678-12');
+c::set('plugin.ga.id', '');
+c::set('plugin.ga', true);
+c::set('plugin.ga.blacklist', [ '127.0.0.1', '::1' ] );
+c::set('plugin.ga.debug', false);
+c::set('plugin.ga.snippet', 'ga');
 ```
 
-### Active
+### `plugin.ga.id` (required)
+
+The Google Analytics ID. Set it to something like `UA-12345678-12`.
+
+```php
+c::set('plugin.ga.id', '');
+```
+
+### `plugin.ga`
 
 You can deactivate the script by setting this value to `false`.
 
@@ -41,42 +49,47 @@ You can deactivate the script by setting this value to `false`.
 c::set('plugin.ga', true);
 ```
 
-### Debug
+### `plugin.ga.blacklist`
 
-The script is only active for not logged in users that are not on a localhost environment. If you always want to have the code active, set this value to `true`.
-
-```php
-c::set('plugin.ga.debug', false);
-```
-
-### Template path
-
-If you don't like the script and want to change it, change the template path. You have access to `$ua`, `$page`, `$pages` and `$site` in the template.
-
-```php
-c::set('plugin.ga.template', __DIR__ . DS . 'template.php');
-```
-
-`$ua` is the Google Analytics ID.
-
-### Blacklist
-
-As default the localhost IP addresses are in the blacklist. That mean that the script will not run on these IP:s except if debug is turned on.
+Localhost is in the blacklist as default. You can change it.
 
 ```php
 c::set('plugin.ga.blacklist', [ '127.0.0.1', '::1' ] );
 ```
 
+### `plugin.ga.debug`
+
+The script is only active for not logged in users and users not on localhost.
+
+If you want to always run the script, set this option to `true`.
+
+```php
+c::set('plugin.ga.debug', false);
+```
+
+### `plugin.ga.snippet`
+
+Change the snippet name with this option. You can override the snippet as well.
+
+```php
+c::set('plugin.ga.snippet', 'ga');
+```
+
 ## Requirements
 
-Kirby 2.3
+- [**Kirby**](https://getkirby.com/) 2.4.1+
+
+## Disclaimer
+
+This plugin is provided "as is" with no guarantee. Use it at your own risk and always test it yourself before using it in a production environment. If you find any issues, please [create a new issue](https://github.com/jenstornell/kirby-ga/issues/new).
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
 
-## Inpiration
+It is discouraged to use this plugin in any project that promotes racism, sexism, homophobia, animal abuse, violence or any other form of hate speech.
 
-I got inspired with the way KirbyAnalytics handle localhost enviroment.
+## Credits
 
-https://github.com/iksi/KirbyAnalytics
+- [Jens Törnell](https://github.com/jenstornell)
+- [iksi](https://github.com/iksi) - Inspired by [KirbyAnalytics](https://github.com/iksi/KirbyAnalytics)
