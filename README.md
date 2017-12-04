@@ -18,7 +18,7 @@ Google Analytics for Kirby CMS.
 1. Add the code below to your footer snippet.
 
 ```php
-<?php echo snippet('ga'); ?>
+<?php snippet('ga'); ?>
 ```
 
 ## Options
