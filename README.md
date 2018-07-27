@@ -75,8 +75,9 @@ Change the snippet name with this option. You can override the snippet as well.
 ```php
 c::set('plugin.ga.snippet', 'ga');
 
--->
+
 ```
+-->
 
 ## Requirements
 
